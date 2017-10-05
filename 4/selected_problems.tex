@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+ \usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+ 
+\begin{document}
+ 
+%\renewcommand{\qedsymbol}{\filledbox}
+%Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%Or just google stuff
+ 
+\title{Solution to Selected Problems of Chapter 4}
+\author{Xiaoshuang Chen}
+\maketitle
+ 
+\begin{problem}{4.5-5}
+    Consider the regularity condition $af(n/b)\leq cf(n)$ for some soncstant $c<1$, which is part of case 3 of the master theorem. Give an example of constants $a\geq1$ and $b>1$ and a function $f(n)$ that satisfies all the conditions in case 3 of the master theorem except the regularity condition.
+\end{problem}
+
+\noindent\textit{Solution}:
+
+Since $f(n)=\Omega(n^{\log_ba+\epsilon})$, we assume that $f(n)=n^{\log_ba+\epsilon}k(n)$, then
+\begin{equation*}
+    \frac{af(n/b)}{f(n)} = \frac{k(n/b)}{b^\epsilon k(n)}
+\end{equation*}
+
+Therefore, a solution exists if we can find some $k(n)$ so that
+\begin{equation*}
+    \forall N>0,\exists n>N \text{ s.t. } \frac{k(n/b)}{b^\epsilon k(n)} \geq 1
+\end{equation*}
+
+Let $b=2,\epsilon = 1$, and $k(n) = \sin(n)$, then
+
+\begin{equation*}
+    \frac{\sin(n / 2)}{2sin(n)} = \frac{1}{4\cos(n/2)}
+\end{equation*}
+oscillates between $[1/4, \infty)$, thus is a solution to this problem.
+
+\end{document}
